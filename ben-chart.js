@@ -1,3 +1,163 @@
+/*
+ * @Description: 依赖于d3.js(d3-5.9.2) 实现柱形 折线 面积图 
+ * @version: 1.0
+ * @Author: sunbenjun
+ * @Date: 2019-08-20 13:13:51
+ * @example
+(function (balanceData) {
+    return new BenChart({
+        mountDom: '#balance',
+        coordinateOffsets: {
+            left: 30,
+            top: 32,
+            right: 0,
+            bottom: 68
+        },
+        ticks: {
+            x: 5,
+            y: 2
+        },
+        data: [{
+            type: 'line',
+            min: balanceData.min,
+            max: balanceData.max,
+            data: balanceData.money,
+            attr: {
+                stroke: '#FF8400',
+                strokeWidth: '1px'
+            },
+            grid: {
+                hLine: {
+                    data: [{
+                        show: true,
+                        attr: {
+                            stroke: 'rgba(238,238,238,.86)',
+                            strokeWidth: 1,
+                            dasharray: 3
+                        }
+                    }, {
+                        show: true,
+                        attr: {
+                            stroke: 'rgba(238,238,238,.86)',
+                            strokeWidth: 1,
+                            dasharray: 3
+                        }
+                    }, {
+                        show: false
+                    }]
+                }
+            },
+            decorate: {
+                type: 'pie',
+                index: [balanceData.stock.length - 1],
+                innerRadius: 3 / 375 * window.screen.width,
+                // 外半径
+                outerRadius: 0,
+                data: [100],
+                attr: {
+                    strokeWidth: 2,
+                    stroke: '#FFD5A7',
+                    fill: '#FF8400'
+                }
+            }
+        }, {
+            type: 'line',
+            min: balanceData.min,
+            max: balanceData.max,
+            data: balanceData.stock,
+            attr: {
+                stroke: '#268CF1',
+                strokeWidth: '1px'
+            },
+            decorate: {
+                type: 'pie',
+                index: [balanceData.stock.length - 1],
+                innerRadius: 3 / 375 * window.screen.width,
+                // 外半径
+                outerRadius: 0,
+                data: [100],
+                attr: {
+                    strokeWidth: 2,
+                    stroke: '#D6EAFD',
+                    fill: '#268CF1'
+                }
+            }
+        }, {
+            type: 'area',
+            key: 1,
+            min: balanceData.min,
+            max: balanceData.max,
+            data: balanceData.money,
+            attr: {
+                stroke: '#FF8400',
+                strokeWidth: '1px'
+            },
+            shadow: {
+                attr: {
+                    fill: ['#f79470', '#ffffff']
+                },
+                opacity: [0.14, 0.14]
+            },
+            axisX: {
+                data: balanceData.date,
+                attr: {
+                    fill: '#747474'
+                },
+                style: {
+                    fontSize: '11px',
+                }
+            },
+            axisY: {
+                data: [balanceData.min, balanceData.max],
+                attr: {
+                    fill: '#AFAFAF'
+                },
+                style: {
+                    fontFamily: 'PingFangSC-Light',
+                    fontSize: '11px',
+                },
+                tick: {
+                    sizeInner: 0,
+                    sizeOuter: 0,
+                    padding: 10,
+                    format: function (d, i) {
+                        var value = '',
+                            y = '';
+                        if (i === 0) {
+                            value = balanceData.min.toFixed(2);
+                            y = '-7';
+                        } else {
+                            value = balanceData.maxUnit;
+                            y = '-8';
+                        }
+                        var obj = {
+                            value: value,
+                            y: y
+                        };
+                        return obj;
+                    }
+                }
+            }
+        }, {
+            type: 'area',
+            key: 2,
+            min: balanceData.min,
+            max: balanceData.max,
+            data: balanceData.stock,
+            attr: {
+                stroke: '#268CF1',
+                strokeWidth: '1px'
+            },
+            shadow: {
+                attr: {
+                    fill: ['#c4e0ff', '#c4e0ff']
+                },
+                opacity: [0.4, 0.14]
+            }
+        }]
+    });
+})(this.data.remain.chart);
+*/
 (function (exports) {
     "use strict";
     var _opt = {};
